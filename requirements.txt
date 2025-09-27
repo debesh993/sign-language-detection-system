@@ -1,6 +1,6 @@
 streamlit
 opencv-python-headless
-mediapipe-silicon
+mediapipe==0.10.20
+tensorflow
 numpy
-scikit-learn
-
+pillow
