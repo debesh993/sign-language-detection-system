@@ -1,0 +1,40 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.env
+*.egg-info/
+*.pickle
+*.h5
+*.db
+
+# Virtual environments
+venv/
+my_env/
+.env/
+
+# VS Code
+.vscode/
+
+# macOS
+.DS_Store
+
+# Logs
+*.log
+
+# Streamlit cache
+.streamlit/
+
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-error.log*
+
+# IDEs
+.idea/
+*.iml
+
+# Misc
+*.tmp
+*.swp
