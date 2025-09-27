@@ -53,10 +53,10 @@ The system leverages **MediaPipe** for hand landmark detection and a trained **R
 
 ## User Manual
 
-    ## User Manual
+## User Manual
 
-     ### 📝 Interactive Word & Sentence Input
-            Our Sign Language Detection app intelligently constructs words and sentences in real-time from hand gestures. The system includes a smart timing mechanism for intuitive typing using gestures:
+##  Interactive Word & Sentence Input
+Our Sign Language Detection app intelligently constructs words and sentences in real-time from hand gestures. The system includes a smart timing mechanism for intuitive typing using gestures:
 
 First Letter Input:
 
