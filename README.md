@@ -81,12 +81,18 @@ Real-Time Feedback:
 The app displays the current word and sentence on-screen as the user performs gestures, giving instant visual feedback.
 
 # Images
-![Letter a to h](alphabets abcdefgh.png)
+![Letter a to h](alphabets_abcdefgh.png)
+
 ![Letter h to Z](alphabets.png)
-![Input H](Screenshot H.png)
-![Input D](Screenshot D.png)
-![Input HELLO](Screenshot HELLO.png)
-![Input HELLO WORLD](Screenshot HELLO WORLD.png)
+
+![Input H](Screenshot_H.png)
+
+![Input D](Screenshot_D.png)
+
+![Input HELLO](Screenshot_HELLO.png)
+
+
+![Input HELLO WORLD](Screenshot_HELLO_WORLD.png)
 
 
 
@@ -98,5 +104,5 @@ The app displays the current word and sentence on-screen as the user performs ge
 1. Clone this repository:
 
 ```bash
-git clone <your-repo-url>
-cd Sign_language_detection_system_final_project
+git clone https://github.com/debesh993/sign-language-detection-system.git
+cd Sign_language_detection_system
