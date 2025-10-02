@@ -5,7 +5,6 @@ import numpy as np
 import pickle
 import time
 
-# Load trained model
 try:
     with open('model.p', 'rb') as f:
         model_dict = pickle.load(f)
@@ -14,22 +13,18 @@ except Exception as e:
     st.error(f"Failed to load model: {e}")
     st.stop()
 
-# Labels A-Z
 labels_dict = {i: chr(65 + i) for i in range(26)}
 
-# MediaPipe setup
 mp_hands = mp.solutions.hands
 hands = mp_hands.Hands(static_image_mode=False, max_num_hands=1, min_detection_confidence=0.5)
 mp_drawing = mp.solutions.drawing_utils
 mp_styles = mp.solutions.drawing_styles
 
-# Streamlit UI
 st.title("Sign Language Detection")
 video_placeholder = st.empty()
 word_placeholder = st.empty()
 sentence_placeholder = st.empty()
 
-# Session state
 if 'current_word' not in st.session_state:
     st.session_state.current_word = ""
 if 'sentence' not in st.session_state:
@@ -39,7 +34,6 @@ if st.button("Refresh"):
     st.session_state.current_word = ""
     st.session_state.sentence = ""
 
-# Timing variables
 FIRST_LETTER_DELAY = 3.0
 LETTER_INTERVAL = 2.0
 WORD_END_INTERVAL = 2.0
@@ -50,7 +44,6 @@ hand_first_detected_time = None
 last_letter_time = 0
 last_hand_time = time.time()
 
-# Webcam setup
 cap = cv2.VideoCapture(0)
 if not cap.isOpened():
     st.error("Failed to access camera")
@@ -100,13 +93,11 @@ while True:
             x2 = int(max(x_) * W) + 20
             y2 = int(max(y_) * H) + 20
 
-            # --- Basic Prediction logic ---
             try:
                 prediction = model.predict([np.asarray(data_aux)])
                 predicted_class = int(prediction[0])
                 predicted_character = labels_dict.get(predicted_class, '?')
 
-                # Draw bounding box and character
                 cv2.rectangle(frame, (x1, y1), (x2, y2), (0, 255, 0), 3)
                 cv2.putText(frame, predicted_character, (x1, y1 - 10),
                             cv2.FONT_HERSHEY_SIMPLEX, 1.3, (0, 255, 0), 3, cv2.LINE_AA)
@@ -118,7 +109,6 @@ while True:
 
     current_time = time.time()
 
-    # --- Letter timing ---
     if hand_present:
         if not first_letter_added:
             if hand_first_detected_time and (current_time - hand_first_detected_time >= FIRST_LETTER_DELAY):
@@ -137,7 +127,6 @@ while True:
             first_letter_added = False
             hand_first_detected_time = None
 
-    # Show frame and text
     frame_rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
     video_placeholder.image(frame_rgb, channels="RGB")
     word_placeholder.text(f"Word: {st.session_state.current_word}")
